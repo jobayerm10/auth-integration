@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 
 import "./NavBar.css";
 import { useContext } from "react";
@@ -8,8 +8,8 @@ import { AuthContext } from "../../contexts/AuthContext";
 // import { use } from "react";
 
 const NavBar = () => {
-  const userInfo = useContext(AuthContext);
-  console.log(userInfo);
+  const { user } = useContext(AuthContext);
+  console.log(user);
   // const userInfo = use(AuthContext);
   // console.log("nav", userInfo);
   const links = (
@@ -27,7 +27,7 @@ const NavBar = () => {
   );
 
   return (
-    <div className="navbar bg-base-100 shadow-sm ">
+    <div className="navbar bg-[#808080] text-white ">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -60,7 +60,11 @@ const NavBar = () => {
         <ul className="menu menu-horizontal px-1">{links}</ul>
       </div>
       <div className="navbar-end">
-        <a className="btn">Button</a>
+        {user ? (
+          <a className="btn">Sign Out</a>
+        ) : (
+          <Link to="/login">Login</Link>
+        )}
       </div>
     </div>
   );
