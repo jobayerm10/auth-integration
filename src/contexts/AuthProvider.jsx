@@ -18,6 +18,14 @@ const AuthProvider = ({ children }) => {
     return signInWithEmailAndPassword(auth, email, password);
   };
 
+  onAuthStateChanged(auth, (currentUser) => {
+    if (currentUser) {
+      console.log("has current user", currentUser);
+    } else {
+      console.log("has current user", currentUser);
+    }
+  });
+
   const signOutUser = () => {
     return signOut(auth);
   };
