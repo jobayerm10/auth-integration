@@ -9,11 +9,12 @@ import { auth } from "../firebase.init";
 import { useEffect, useState } from "react";
 const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
+
   const createUser = (email, password) => {
     return createUserWithEmailAndPassword(auth, email, password);
   };
 
-  const signInuser = (email, password) => {
+  const signInUser = (email, password) => {
     return signInWithEmailAndPassword(auth, email, password);
   };
 
@@ -37,7 +38,7 @@ const AuthProvider = ({ children }) => {
   const userInfo = {
     user,
     createUser,
-    signInuser,
+    signInUser,
     signOutUser,
   };
   return <AuthContext value={userInfo}>{children}</AuthContext>;
